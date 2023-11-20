@@ -1,0 +1,63 @@
+1. install additional provider eslint
+
+     [https://typescript-eslint.io/getting-started] 
+   - pnpm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript
+  
+     [https://github.com/iamturns/eslint-config-airbnb-typescript]
+   - pnpm i eslint-config-airbnb
+   - pnpm i eslint-config-airbnb-typescript
+
+2. setting eslintrc.json
+
+{
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb-typescript"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "semi": "error",
+    "camelcase": "error",
+    "no-console": "warn",
+    "eqeqeq": "error",
+    "arrow-body-style": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off"
+  }
+}
+
+
+3. setting prettier, buat file .prettierrc di root folder
+
+{
+    "printWidth": 150,
+    "singleQuote": true,
+    "semi": true
+}
+  
+4. install husky [https://typicode.github.io/husky/getting-started.html]
+5. install commitlint [https://commitlint.js.org/#/?id=getting-started]
+
+6. Change commitlint configuration
+
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [2, 'always', ['chore', 'docs', 'feat', 'fix', 'refactor']],
+    'subject-case': [2, 'always', ['lower-case']],
+  },
+};
